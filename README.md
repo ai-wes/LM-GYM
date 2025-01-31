@@ -234,7 +234,7 @@ pipeline.plot_learning_curve("learning_curve.png")
 
 ### Custom Reward Components
 ```python
-from llm_gym.utils.rewards import RewardComponent
+from lm-gym.utils.rewards import RewardComponent
 
 class CustomReward(RewardComponent):
     def __init__(self, weight: float = 1.0):
@@ -251,7 +251,7 @@ class CustomReward(RewardComponent):
 
 ## Project Structure 📁
 ```
-llm_gym/
+lm-gym/
 ├── envs/                    # Environment implementations
 │   ├── base.py             # Base environment class
 │   ├── meta_reasoning.py   # Meta-reasoning environment
@@ -288,14 +288,14 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## Citation 📚
 
-If you use LLM GYM in your research, please cite:
+If you use LM-GYM in your research, please cite:
 
 ```bibtex
-@software{llm_gym2024,
-  title = {LLM GYM: A Framework for Training LLM Cognitive Strategies},
-  author = {Your Name},
-  year = {2024},
-  url = {https://github.com/yourusername/llm-gym}
+@software{lm_gym2025,
+  title = {LM-GYM: A Framework for Training Language Model Cognitive Strategies},
+  author = {AI-Wes},
+  year = {2025},
+  url = {https://github.com/ai-wes/lm-gym}
 }
 ``` 
 
