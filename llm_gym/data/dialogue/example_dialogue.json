@@ -1,0 +1,518 @@
+[{
+    "id": "DLG001",
+    "difficulty": 0.4,
+    "scenario": {
+        "type": "customer_service",
+        "context": "Customer reporting issues with their streaming service subscription",
+        "participant_roles": ["customer", "support_agent"],
+        "goals": ["resolve streaming issue", "ensure customer satisfaction"]
+    },
+    "required_elements": [
+        {
+            "type": "greeting",
+            "examples": ["Hello! How can I help you today?"],
+            "importance": 0.8
+        },
+        {
+            "type": "empathy",
+            "examples": ["I understand how frustrating this must be"],
+            "importance": 0.9
+        },
+        {
+            "type": "solution_verification",
+            "examples": ["Is the streaming working properly now?"],
+            "importance": 1.0
+        }
+    ],
+    "conversation_flow": [
+        {
+            "turn": 1,
+            "speaker": "agent",
+            "content": "Hello! How can I help you today?",
+            "annotations": {
+                "intent": "greeting",
+                "sentiment": 0.8,
+                "required_elements_used": ["greeting"]
+            }
+        },
+        {
+            "turn": 2,
+            "speaker": "customer",
+            "content": "I can't access my streaming account. It keeps saying 'error connecting to server'",
+            "annotations": {
+                "intent": "problem_reporting",
+                "sentiment": -0.6,
+                "required_elements_used": []
+            }
+        },
+        {
+            "turn": 3,
+            "speaker": "agent",
+            "content": "I understand how frustrating these connection issues can be. Let me help you resolve this right away.",
+            "annotations": {
+                "intent": "empathy_and_reassurance",
+                "sentiment": 0.7,
+                "required_elements_used": ["empathy"]
+            }
+        }
+    ],
+    "success_criteria": {
+        "minimum_turns": 4,
+        "required_outcomes": ["problem_resolution", "customer_confirmation"],
+        "prohibited_responses": ["dismissive_responses", "technical_jargon"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "customer_angry",
+            "valid_responses": [
+                "I completely understand your frustration",
+                "Let me escalate this to our senior support team"
+            ],
+            "impact": -0.5
+        }
+    ]
+},
+{
+    "id": "DLG002",
+    "difficulty": 0.8,
+    "scenario": {
+        "type": "negotiation",
+        "context": "Software project deadline extension discussion",
+        "participant_roles": ["project_manager", "client"],
+        "goals": ["reach agreement on new deadline", "maintain client relationship"]
+    },
+    "required_elements": [
+        {
+            "type": "active_listening",
+            "examples": ["If I understand correctly, your main concern is..."],
+            "importance": 0.9
+        },
+        {
+            "type": "solution_proposal",
+            "examples": ["What if we delivered the core features by..."],
+            "importance": 1.0
+        }
+    ],
+    "conversation_flow": [
+        {
+            "turn": 1,
+            "speaker": "client",
+            "content": "The current timeline isn't acceptable. We need this launched before the holiday season.",
+            "annotations": {
+                "intent": "express_dissatisfaction",
+                "sentiment": -0.7,
+                "required_elements_used": []
+            }
+        },
+        {
+            "turn": 2,
+            "speaker": "project_manager",
+            "content": "I understand the holiday season is crucial for your business. Let me explain our current progress and discuss some options.",
+            "annotations": {
+                "intent": "empathize_and_redirect",
+                "sentiment": 0.5,
+                "required_elements_used": ["active_listening"]
+            }
+        }
+    ],
+    "success_criteria": {
+        "minimum_turns": 6,
+        "required_outcomes": ["agreed_timeline", "documented_commitments"],
+        "prohibited_responses": ["unrealistic_promises", "defensive_responses"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "budget_concern",
+            "valid_responses": [
+                "Let's look at adjusting the scope to meet the timeline",
+                "We could phase the deliverables"
+            ],
+            "impact": -0.3
+        }
+    ]
+},
+{
+    "id": "DLG003",
+    "difficulty": 0.9,
+    "scenario": {
+        "type": "technical_interview",
+        "context": "Senior software engineer interviewing a candidate for a full-stack position",
+        "participant_roles": ["interviewer", "candidate"],
+        "goals": ["assess technical competency", "evaluate problem-solving approach", "maintain professional atmosphere"]
+    },
+    "required_elements": [
+        {
+            "type": "problem_introduction",
+            "examples": ["Could you walk me through how you would design a scalable caching system?"],
+            "importance": 1.0
+        },
+        {
+            "type": "clarifying_questions",
+            "examples": ["What assumptions are you making about the system requirements?"],
+            "importance": 0.9
+        },
+        {
+            "type": "constructive_feedback",
+            "examples": ["That's an interesting approach. Have you considered..."],
+            "importance": 0.8
+        }
+    ],
+    "conversation_flow": [
+        {
+            "turn": 1,
+            "speaker": "interviewer",
+            "content": "Thanks for joining us today. Let's start with a system design problem. Could you walk me through how you would design a scalable caching system?",
+            "annotations": {
+                "intent": "problem_presentation",
+                "sentiment": 0.6,
+                "required_elements_used": ["problem_introduction"]
+            }
+        },
+        {
+            "turn": 2,
+            "speaker": "candidate",
+            "content": "Before I dive in, I'd like to clarify a few things. What's the expected scale of the system and the main performance requirements?",
+            "annotations": {
+                "intent": "requirement_gathering",
+                "sentiment": 0.7,
+                "required_elements_used": []
+            }
+        }
+    ],
+    "success_criteria": {
+        "minimum_turns": 8,
+        "required_outcomes": ["technical_depth_demonstrated", "problem_solving_clarity", "communication_effectiveness"],
+        "prohibited_responses": ["dismissive_feedback", "leading_questions"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "candidate_stuck",
+            "valid_responses": [
+                "Let's break this down into smaller parts",
+                "What if we consider a simpler version first?"
+            ],
+            "impact": -0.2
+        }
+    ]
+},
+{
+    "id": "DLG004",
+    "difficulty": 0.7,
+    "scenario": {
+        "type": "medical_consultation",
+        "context": "Telemedicine appointment for chronic condition follow-up",
+        "participant_roles": ["doctor", "patient"],
+        "goals": ["assess patient progress", "adjust treatment plan", "ensure patient understanding"]
+    },
+    "required_elements": [
+        {
+            "type": "medical_history_review",
+            "examples": ["How have you been managing with the current medication?"],
+            "importance": 1.0
+        },
+        {
+            "type": "symptom_assessment",
+            "examples": ["Can you describe any side effects you've experienced?"],
+            "importance": 0.9
+        },
+        {
+            "type": "treatment_explanation",
+            "examples": ["Let me explain why I'm recommending this change in dosage"],
+            "importance": 0.9
+        }
+    ],
+    "conversation_flow": [
+        {
+            "turn": 1,
+            "speaker": "doctor",
+            "content": "Hello, I've reviewed your recent lab results. How have you been feeling since our last appointment?",
+            "annotations": {
+                "intent": "patient_assessment",
+                "sentiment": 0.7,
+                "required_elements_used": ["medical_history_review"]
+            }
+        },
+        {
+            "turn": 2,
+            "speaker": "patient",
+            "content": "The morning stiffness has improved, but I'm still having some pain in the evenings.",
+            "annotations": {
+                "intent": "symptom_reporting",
+                "sentiment": -0.3,
+                "required_elements_used": []
+            }
+        }
+    ],
+    "success_criteria": {
+        "minimum_turns": 6,
+        "required_outcomes": ["clear_treatment_plan", "patient_understanding", "follow_up_scheduled"],
+        "prohibited_responses": ["medical_jargon", "rushed_consultation"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "treatment_concerns",
+            "valid_responses": [
+                "Let's discuss alternative treatment options",
+                "We can adjust the plan based on your concerns"
+            ],
+            "impact": -0.3
+        }
+    ]
+},
+{
+    "id": "DLG005",
+    "difficulty": 0.85,
+    "scenario": {
+        "type": "team_conflict_resolution",
+        "context": "Addressing disagreement between team members about project direction",
+        "participant_roles": ["mediator", "team_member_a", "team_member_b"],
+        "goals": ["resolve conflict", "improve team communication", "establish action plan"]
+    },
+    "required_elements": [
+        {
+            "type": "neutral_facilitation",
+            "examples": ["Let's hear both perspectives on this issue"],
+            "importance": 1.0
+        },
+        {
+            "type": "common_ground",
+            "examples": ["It seems you both want the project to succeed"],
+            "importance": 0.9
+        },
+        {
+            "type": "action_planning",
+            "examples": ["How can we move forward in a way that addresses both concerns?"],
+            "importance": 0.8
+        }
+    ],
+    "conversation_flow": [
+        {
+            "turn": 1,
+            "speaker": "mediator",
+            "content": "Thank you both for meeting today. I'd like to understand each of your perspectives on the project direction.",
+            "annotations": {
+                "intent": "opening_dialogue",
+                "sentiment": 0.6,
+                "required_elements_used": ["neutral_facilitation"]
+            }
+        },
+        {
+            "turn": 2,
+            "speaker": "team_member_a",
+            "content": "The current approach sacrifices code quality for speed. We need to maintain our standards.",
+            "annotations": {
+                "intent": "express_concern",
+                "sentiment": -0.4,
+                "required_elements_used": []
+            }
+        }
+    ],
+    "success_criteria": {
+        "minimum_turns": 10,
+        "required_outcomes": ["mutual_understanding", "agreed_solution", "improved_relationship"],
+        "prohibited_responses": ["taking_sides", "dismissive_remarks"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "escalating_tension",
+            "valid_responses": [
+                "Let's take a step back and focus on our shared goals",
+                "I hear strong feelings on both sides. Let's break this down"
+            ],
+            "impact": -0.4
+        }
+    ]
+},
+{
+    "id": "DLG006",
+    "difficulty": 0.75,
+    "scenario": {
+        "type": "educational_mentoring",
+        "context": "PhD advisor helping student overcome research challenges",
+        "participant_roles": ["advisor", "student"],
+        "goals": ["address research blockers", "build student confidence", "develop problem-solving skills"]
+    },
+    "required_elements": [
+        {
+            "type": "problem_exploration",
+            "examples": ["Walk me through what you've tried so far in your experiments"],
+            "importance": 1.0
+        },
+        {
+            "type": "guided_discovery",
+            "examples": ["What do you think these results might suggest about your hypothesis?"],
+            "importance": 0.9
+        },
+        {
+            "type": "constructive_guidance",
+            "examples": ["Consider approaching this from a different angle - what if we..."],
+            "importance": 0.8
+        }
+    ],
+    "conversation_flow": [
+        {
+            "turn": 1,
+            "speaker": "student",
+            "content": "I've been stuck on this experiment for weeks. The results keep contradicting my initial hypothesis.",
+            "annotations": {
+                "intent": "express_frustration",
+                "sentiment": -0.6,
+                "required_elements_used": []
+            }
+        },
+        {
+            "turn": 2,
+            "speaker": "advisor",
+            "content": "Sometimes unexpected results lead to the most interesting discoveries. Let's go through your methodology step by step and see what we can learn.",
+            "annotations": {
+                "intent": "reframe_challenge",
+                "sentiment": 0.7,
+                "required_elements_used": ["problem_exploration"]
+            }
+        }
+    ],
+    "success_criteria": {
+        "minimum_turns": 7,
+        "required_outcomes": ["clear_next_steps", "increased_understanding", "student_empowerment"],
+        "prohibited_responses": ["direct_solutions", "dismissive_remarks"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "student_overwhelmed",
+            "valid_responses": [
+                "Let's break this down into smaller, manageable steps",
+                "What part feels most approachable to tackle first?"
+            ],
+            "impact": -0.3
+        }
+    ]
+},
+{
+    "id": "DLG007",
+    "difficulty": 0.95,
+    "scenario": {
+        "type": "crisis_management",
+        "context": "Corporate communications team handling major data breach",
+        "participant_roles": ["crisis_manager", "communications_director", "legal_counsel"],
+        "goals": ["develop response strategy", "maintain transparency", "protect company interests"]
+    },
+    "required_elements": [
+        {
+            "type": "situation_assessment",
+            "examples": ["What's our current understanding of the breach scope?"],
+            "importance": 1.0
+        },
+        {
+            "type": "stakeholder_consideration",
+            "examples": ["How will this impact our customers and partners?"],
+            "importance": 0.9
+        },
+        {
+            "type": "action_coordination",
+            "examples": ["Let's align on the immediate steps we need to take"],
+            "importance": 1.0
+        }
+    ],
+    "conversation_flow": [
+        {
+            "turn": 1,
+            "speaker": "communications_director",
+            "content": "We've detected unauthorized access to customer data. Social media is already picking up chatter.",
+            "annotations": {
+                "intent": "alert_escalation",
+                "sentiment": -0.8,
+                "required_elements_used": []
+            }
+        },
+        {
+            "turn": 2,
+            "speaker": "crisis_manager",
+            "content": "Let's assess the situation before making any public statements. What's the confirmed scope of the breach, and what protective measures are already in place?",
+            "annotations": {
+                "intent": "strategic_assessment",
+                "sentiment": 0.2,
+                "required_elements_used": ["situation_assessment"]
+            }
+        }
+    ],
+    "success_criteria": {
+        "minimum_turns": 8,
+        "required_outcomes": ["clear_action_plan", "stakeholder_communication_strategy", "risk_mitigation"],
+        "prohibited_responses": ["premature_disclosure", "defensive_stance"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "media_pressure",
+            "valid_responses": [
+                "Let's prepare an interim statement acknowledging we're investigating",
+                "We need to coordinate with legal before any public response"
+            ],
+            "impact": -0.6
+        }
+    ]
+},
+{
+    "id": "DLG008",
+    "difficulty": 0.8,
+    "scenario": {
+        "type": "sales_consultation",
+        "context": "Enterprise software solution for digital transformation",
+        "participant_roles": ["solutions_architect", "client_cto", "procurement_manager"],
+        "goals": ["understand client needs", "demonstrate value proposition", "address technical concerns"]
+    },
+    "required_elements": [
+        {
+            "type": "needs_discovery",
+            "examples": ["What are the main challenges your current system presents?"],
+            "importance": 1.0
+        },
+        {
+            "type": "value_articulation",
+            "examples": ["Based on your requirements, here's how our solution could optimize your workflow"],
+            "importance": 0.9
+        },
+        {
+            "type": "technical_clarification",
+            "examples": ["Let me explain how our API integration would work with your existing infrastructure"],
+            "importance": 0.8
+        }
+    ],
+    "conversation_flow": [
+        {
+            "turn": 1,
+            "speaker": "client_cto",
+            "content": "We need to modernize our legacy systems, but I'm concerned about disruption to our operations.",
+            "annotations": {
+                "intent": "express_concern",
+                "sentiment": -0.3,
+                "required_elements_used": []
+            }
+        },
+        {
+            "turn": 2,
+            "speaker": "solutions_architect",
+            "content": "That's a valid concern. Could you walk me through your critical workflows? This will help us design a phased implementation that minimizes disruption.",
+            "annotations": {
+                "intent": "gather_requirements",
+                "sentiment": 0.6,
+                "required_elements_used": ["needs_discovery"]
+            }
+        }
+    ],
+    "success_criteria": {
+        "minimum_turns": 9,
+        "required_outcomes": ["technical_alignment", "value_demonstration", "implementation_roadmap"],
+        "prohibited_responses": ["overselling", "technical_oversimplification"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "budget_constraints",
+            "valid_responses": [
+                "Let's explore our flexible pricing models",
+                "We can prioritize features based on your most critical needs"
+            ],
+            "impact": -0.4
+        }
+    ]
+}
+]

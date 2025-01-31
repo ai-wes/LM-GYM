@@ -1,0 +1,551 @@
+[{
+    "id": "LP001",
+    "difficulty": 0.3,
+    "premises": [
+        "All developers at TechCorp use version control",
+        "Alice is a developer at TechCorp",
+        "Anyone who uses version control follows code review practices"
+    ],
+    "variables": {
+        "A": "being a developer at TechCorp",
+        "B": "using version control",
+        "C": "following code review practices"
+    },
+    "valid_conclusions": [
+        "Alice uses version control",
+        "Alice follows code review practices"
+    ],
+    "invalid_conclusions": [
+        "All developers follow code review practices",
+        "Everyone at TechCorp uses version control"
+    ],
+    "query_templates": [
+        "What can we conclude about Alice's practices?",
+        "Does Alice follow code review practices?"
+    ],
+    "solution_path": [
+        {
+            "step": 1,
+            "action": "QUERY",
+            "content": "Is Alice a developer at TechCorp?",
+            "explanation": "Establish the initial condition about Alice"
+        },
+        {
+            "step": 2,
+            "action": "SOLVE",
+            "content": "Alice uses version control",
+            "explanation": "Apply first premise to Alice's status"
+        },
+        {
+            "step": 3,
+            "action": "SOLVE",
+            "content": "Alice follows code review practices",
+            "explanation": "Apply transitive relationship from version control to code review"
+        }
+    ],
+    "metadata": {
+        "reasoning_type": "deductive",
+        "complexity_factors": ["transitive relations", "universal statements"],
+        "educational_level": "beginner"
+    }
+},
+{
+    "id": "LP002",
+    "difficulty": 0.7,
+    "premises": [
+        "If it rains, the solar panels generate less power",
+        "If the solar panels generate less power, the backup battery activates",
+        "If the backup battery activates, the system sends an alert",
+        "No alert was sent today"
+    ],
+    "variables": {
+        "R": "it rains",
+        "P": "solar panels generate less power",
+        "B": "backup battery activates",
+        "A": "system sends an alert"
+    },
+    "valid_conclusions": [
+        "It did not rain today",
+        "The solar panels did not generate less power",
+        "The backup battery did not activate"
+    ],
+    "invalid_conclusions": [
+        "It will not rain tomorrow",
+        "The solar panels are working perfectly"
+    ],
+    "query_templates": [
+        "What can we conclude about today's weather?",
+        "Did the backup battery activate today?"
+    ],
+    "solution_path": [
+        {
+            "step": 1,
+            "action": "QUERY",
+            "content": "Was an alert sent today?",
+            "explanation": "Start with known fact"
+        },
+        {
+            "step": 2,
+            "action": "SOLVE",
+            "content": "The backup battery did not activate",
+            "explanation": "Apply contrapositive reasoning"
+        },
+        {
+            "step": 3,
+            "action": "SOLVE",
+            "content": "The solar panels did not generate less power",
+            "explanation": "Continue contrapositive chain"
+        },
+        {
+            "step": 4,
+            "action": "SOLVE",
+            "content": "It did not rain today",
+            "explanation": "Complete contrapositive chain to reach conclusion"
+        }
+    ],
+    "metadata": {
+        "reasoning_type": "deductive",
+        "complexity_factors": ["multiple premises", "contrapositive reasoning", "chain inference"],
+        "educational_level": "advanced"
+    }
+},
+{
+    "id": "LP003",
+    "difficulty": 0.4,
+    "premises": [
+      "All certified mechanics at AutoCare must complete electric vehicle training",
+      "Javier repaired a hybrid engine last week",
+      "Only mechanics with electric vehicle training can repair hybrid engines"
+    ],
+    "variables": {
+      "M": "being a certified mechanic at AutoCare",
+      "E": "completing electric vehicle training",
+      "H": "repairing hybrid engines"
+    },
+    "valid_conclusions": [
+      "Javier completed electric vehicle training",
+      "Javier is a certified mechanic at AutoCare"
+    ],
+    "invalid_conclusions": [
+      "All certified mechanics repair hybrid engines",
+      "Electric vehicle training is only for hybrid repairs"
+    ],
+    "query_templates": [
+      "What do we know about Javier's qualifications?",
+      "Can non-certified mechanics repair hybrids at AutoCare?"
+    ],
+    "solution_path": [
+      {
+        "step": 1,
+        "action": "QUERY",
+        "content": "Did Javier repair a hybrid engine?",
+        "explanation": "Establish the key action"
+      },
+      {
+        "step": 2,
+        "action": "SOLVE",
+        "content": "Javier has electric vehicle training",
+        "explanation": "Apply third premise's restriction"
+      },
+      {
+        "step": 3,
+        "action": "SOLVE",
+        "content": "Javier is a certified mechanic",
+        "explanation": "Apply first premise's requirement"
+      }
+    ],
+    "metadata": {
+      "reasoning_type": "deductive",
+      "complexity_factors": ["existential quantification", "prerequisite chains"],
+      "educational_level": "intermediate"
+    }
+  },
+  {
+    "id": "LP004",
+    "difficulty": 0.6,
+    "premises": [
+      "If a patient has elevated cortisol levels, they require stress testing",
+      "All stress testing patients get dietary counseling",
+      "Either dietary counseling or medication is prescribed daily",
+      "No medications were prescribed yesterday"
+    ],
+    "variables": {
+      "C": "elevated cortisol levels",
+      "S": "requiring stress testing",
+      "D": "receiving dietary counseling",
+      "M": "being prescribed medication"
+    },
+    "valid_conclusions": [
+      "All patients yesterday received dietary counseling",
+      "No patients yesterday had elevated cortisol levels",
+      "No stress tests were needed yesterday"
+    ],
+    "invalid_conclusions": [
+      "All patients have normal cortisol levels",
+      "Dietary counseling prevents elevated cortisol"
+    ],
+    "query_templates": [
+      "What can we determine about yesterday's patients?",
+      "Were any stress tests administered yesterday?"
+    ],
+    "solution_path": [
+      {
+        "step": 1,
+        "action": "QUERY",
+        "content": "Were any medications prescribed yesterday?",
+        "explanation": "Start with known exclusion"
+      },
+      {
+        "step": 2,
+        "action": "SOLVE",
+        "content": "All patients received dietary counseling",
+        "explanation": "Apply disjunctive premise (either/or)"
+      },
+      {
+        "step": 3,
+        "action": "SOLVE",
+        "content": "No patients required stress testing",
+        "explanation": "Contrapositive of second premise chain"
+      },
+      {
+        "step": 4,
+        "action": "SOLVE",
+        "content": "No patients had elevated cortisol",
+        "explanation": "Original condition for stress testing"
+      }
+    ],
+    "metadata": {
+      "reasoning_type": "abductive",
+      "complexity_factors": ["disjunctive syllogism", "multi-step contrapositive"],
+      "educational_level": "advanced"
+    }
+  },
+  {
+    "id": "LP005",
+    "difficulty": 0.5,
+    "premises": [
+      "Every financial analyst in Division B owns a premium calculator",
+      "No premium calculators can process crypto valuations",
+      "Sarah submitted a crypto valuation report this morning"
+    ],
+    "variables": {
+      "F": "being a financial analyst in Division B",
+      "P": "owning a premium calculator",
+      "C": "processing crypto valuations"
+    },
+    "valid_conclusions": [
+      "Sarah's calculator cannot process crypto valuations",
+      "Sarah is either not in Division B or didn't use her premium calculator"
+    ],
+    "invalid_conclusions": [
+      "Division B analysts never work with crypto",
+      "All crypto reports use basic calculators"
+    ],
+    "query_templates": [
+      "What do we know about Sarah's Division B status?",
+      "Can premium calculators handle crypto reports?"
+    ],
+    "solution_path": [
+      {
+        "step": 1,
+        "action": "QUERY",
+        "content": "Can Division B analysts' calculators process crypto?",
+        "explanation": "Establish tool limitations"
+      },
+      {
+        "step": 2,
+        "action": "SOLVE",
+        "content": "Premium calculators cannot process crypto",
+        "explanation": "Direct from second premise"
+      },
+      {
+        "step": 3,
+        "action": "SOLVE",
+        "content": "If Sarah is in Division B, she didn't use her assigned calculator",
+        "explanation": "Disjunctive conclusion from conflicting requirements"
+      }
+    ],
+    "metadata": {
+      "reasoning_type": "disjunctive",
+      "complexity_factors": ["exclusive properties", "disjunctive resolution"],
+      "educational_level": "intermediate"
+    }
+  },
+  {
+    "id": "LP006",
+    "difficulty": 0.5,
+    "premises": [
+      "All espresso machines in Café Lumière require daily calibration",
+      "Baristas working morning shifts must use calibrated equipment",
+      "Sophie worked the morning shift yesterday",
+      "Machines without calibration stickers are inactive"
+    ],
+    "variables": {
+      "E": "espresso machine requiring calibration",
+      "C": "equipment being calibrated",
+      "M": "working morning shift",
+      "S": "machine having active sticker"
+    },
+    "valid_conclusions": [
+      "Sophie used calibrated equipment",
+      "The machine Sophie used had a calibration sticker",
+      "Sophie's machine received daily calibration"
+    ],
+    "invalid_conclusions": [
+      "All café equipment requires daily calibration",
+      "Evening shift baristas use uncalibrated machines"
+    ],
+    "query_templates": [
+      "What do we know about Sophie's equipment?",
+      "Do afternoon shifts require calibrated machines?"
+    ],
+    "solution_path": [
+      {
+        "step": 1,
+        "action": "QUERY",
+        "content": "Did Sophie work morning shift?",
+        "explanation": "Establish shift timing"
+      },
+      {
+        "step": 2,
+        "action": "SOLVE",
+        "content": "Sophie required calibrated equipment",
+        "explanation": "Apply second premise"
+      },
+      {
+        "step": 3,
+        "action": "SOLVE",
+        "content": "Her machine was calibrated daily",
+        "explanation": "Chain first and fourth premises"
+      }
+    ],
+    "metadata": {
+      "reasoning_type": "deductive",
+      "complexity_factors": ["equipment dependencies", "shift-based rules"],
+      "educational_level": "intermediate"
+    }
+  },
+  {
+    "id": "LP007",
+    "difficulty": 0.8,
+    "premises": [
+      "All prototype drones have collision avoidance disabled",
+      "Any disabled safety feature requires dual operator control",
+      "Flight logs show single-operator control yesterday",
+      "Test flights occur only with prototype drones"
+    ],
+    "variables": {
+      "P": "prototype drone",
+      "C": "collision avoidance disabled",
+      "D": "dual operator control",
+      "T": "test flight occurrence"
+    },
+    "valid_conclusions": [
+      "Yesterday's flights weren't test flights",
+      "No prototype drones were flown yesterday",
+      "All yesterday's drones had safety features enabled"
+    ],
+    "invalid_conclusions": [
+      "Prototype drones are unsafe for testing",
+      "Dual control enables collision avoidance"
+    ],
+    "query_templates": [
+      "What can we infer about yesterday's drone fleet?",
+      "Were any safety features disabled yesterday?"
+    ],
+    "solution_path": [
+      {
+        "step": 1,
+        "action": "QUERY",
+        "content": "Were any test flights conducted?",
+        "explanation": "Establish flight type"
+      },
+      {
+        "step": 2,
+        "action": "SOLVE",
+        "content": "No prototype drones flown (contrapositive)",
+        "explanation": "Combine single-operator control with safety rules"
+      },
+      {
+        "step": 3,
+        "action": "SOLVE",
+        "content": "Collision avoidance remained enabled",
+        "explanation": "Through elimination of prototypes"
+      }
+    ],
+    "metadata": {
+      "reasoning_type": "contrapositive",
+      "complexity_factors": ["nested conditionals", "operational constraints"],
+      "educational_level": "advanced"
+    }
+  },
+  {
+    "id": "LP008",
+    "difficulty": 0.4,
+    "premises": [
+      "Every gardening workshop participant receives herb seeds",
+      "Seed recipients must attend potting demonstrations",
+      "Liam attended yesterday's gardening workshop"
+    ],
+    "variables": {
+      "G": "gardening workshop participation",
+      "S": "receiving herb seeds",
+      "P": "attending potting demo"
+    },
+    "valid_conclusions": [
+      "Liam received herb seeds",
+      "Liam attended a potting demonstration"
+    ],
+    "invalid_conclusions": [
+      "Only workshop participants get potting demos",
+      "Herb seeds are exclusive to workshops"
+    ],
+    "query_templates": [
+      "What obligations does Liam have?",
+      "Do all seed recipients join workshops?"
+    ],
+    "solution_path": [
+      {
+        "step": 1,
+        "action": "QUERY",
+        "content": "Did Liam join the workshop?",
+        "explanation": "Confirm participation"
+      },
+      {
+        "step": 2,
+        "action": "SOLVE",
+        "content": "Liam received seeds",
+        "explanation": "Apply first premise"
+      },
+      {
+        "step": 3,
+        "action": "SOLVE",
+        "content": "Liam attended potting demo",
+        "explanation": "Enforce seed recipient requirement"
+      }
+    ],
+    "metadata": {
+      "reasoning_type": "transitive",
+      "complexity_factors": ["membership benefits", "conditional obligations"],
+      "educational_level": "beginner"
+    }
+  },
+  {
+    "id": "LP009",
+    "difficulty": 0.7,
+    "premises": [
+      "If the museum acquires the artifact, it must build a climate-controlled room",
+      "Construction permits are needed for new rooms",
+      "The museum director rejected permit applications",
+      "Either loans get extended or new acquisitions are displayed"
+    ],
+    "variables": {
+      "A": "artifact acquisition",
+      "C": "climate-controlled construction",
+      "P": "permits obtained",
+      "L": "loan extensions"
+    },
+    "valid_conclusions": [
+      "Loans must be extended",
+      "No climate-controlled room will be built",
+      "The artifact wasn't acquired"
+    ],
+    "invalid_conclusions": [
+      "The museum never applies for permits",
+      "All current loans are expiring"
+    ],
+    "query_templates": [
+      "What's the implication of rejected permits?",
+      "Will the museum display new acquisitions?"
+    ],
+    "solution_path": [
+      {
+        "step": 1,
+        "action": "QUERY",
+        "content": "Were permits approved?",
+        "explanation": "Start with known rejection"
+      },
+      {
+        "step": 2,
+        "action": "SOLVE",
+        "content": "No construction possible",
+        "explanation": "Contrapositive of permit requirement"
+      },
+      {
+        "step": 3,
+        "action": "SOLVE",
+        "content": "Artifact not acquired",
+        "explanation": "Necessary condition failure"
+      },
+      {
+        "step": 4,
+        "action": "SOLVE",
+        "content": "Loans extended",
+        "explanation": "Disjunctive resolution"
+      }
+    ],
+    "metadata": {
+      "reasoning_type": "disjunctive",
+      "complexity_factors": ["permits chain", "mutually exclusive outcomes"],
+      "educational_level": "advanced"
+    }
+  },
+  {
+    "id": "LP010",
+    "difficulty": 0.6,
+    "premises": [
+      "All conference speakers must submit abstracts by March 1",
+      "Late submissions go into poster sessions",
+      "Dr. Chen presented an oral talk",
+      "No poster sessions accept late abstracts after April"
+    ],
+    "variables": {
+      "S": "conference speaker",
+      "A": "abstract submitted by March 1",
+      "P": "poster session placement",
+      "T": "oral talk presentation"
+    },
+    "valid_conclusions": [
+      "Dr. Chen submitted by March 1",
+      "Dr. Chen's abstract wasn't late",
+      "Dr. Chen isn't in poster sessions"
+    ],
+    "invalid_conclusions": [
+      "All oral talks were submitted late",
+      "Poster sessions only occur in April"
+    ],
+    "query_templates": [
+      "What do we know about Dr. Chen's submission?",
+      "Can late submitters give oral talks?"
+    ],
+    "solution_path": [
+      {
+        "step": 1,
+        "action": "QUERY",
+        "content": "Did Dr. Chen present orally?",
+        "explanation": "Establish presentation format"
+      },
+      {
+        "step": 2,
+        "action": "SOLVE",
+        "content": "Not in poster sessions",
+        "explanation": "Mutual exclusivity"
+      },
+      {
+        "step": 3,
+        "action": "SOLVE",
+        "content": "Abstract submitted on time",
+        "explanation": "Contrapositive of second premise"
+      }
+    ],
+    "metadata": {
+      "reasoning_type": "modus_tollens",
+      "complexity_factors": ["submission deadlines", "presentation formats"],
+      "educational_level": "intermediate"
+    }
+  }
+
+
+
+
+]

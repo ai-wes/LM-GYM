@@ -1,0 +1,57 @@
+{
+    "id": "string",
+    "difficulty": "float (0.0-1.0)",
+    "task": {
+        "type": "enum (problem_solving/decision_making/...)",
+        "description": "string",
+        "context": "string",
+        "constraints": ["string"]
+    },
+    "reasoning_components": [
+        {
+            "step": "int",
+            "type": "enum (assumption/inference/verification/...)",
+            "content": "string",
+            "dependencies": ["step_id"],
+            "validation_criteria": ["string"]
+        },
+        ...
+    ],
+    "expected_analysis": {
+        "key_considerations": ["string"],
+        "potential_biases": ["string"],
+        "uncertainty_factors": [
+            {
+                "factor": "string",
+                "impact": "float (0.0-1.0)",
+                "mitigation_strategies": ["string"]
+            },
+            ...
+        ]
+    },
+    "solution_paths": [
+        {
+            "path_id": "string",
+            "steps": [
+                {
+                    "reasoning_step": "string",
+                    "justification": "string",
+                    "confidence": "float (0.0-1.0)"
+                },
+                ...
+            ],
+            "outcome": {
+                "validity": "float (0.0-1.0)",
+                "robustness": "float (0.0-1.0)",
+                "explanation": "string"
+            }
+        },
+        ...
+    ],
+    "evaluation_criteria": {
+        "reasoning_quality": ["completeness", "coherence", "validity"],
+        "bias_awareness": "float (0.0-1.0)",
+        "uncertainty_handling": "float (0.0-1.0)",
+        "adaptability": "float (0.0-1.0)"
+    }
+}

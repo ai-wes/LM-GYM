@@ -1,0 +1,411 @@
+[
+    {
+        "id": "MB001",
+        "difficulty": 0.5,
+        "task_type": "factual_recall",
+        "information_items": [
+            {
+                "content": "The Apollo 11 mission landed on the Moon on July 20, 1969",
+                "category": "space_history",
+                "importance": 0.9,
+                "relationships": [
+                    {
+                        "related_to": "item_2",
+                        "relationship_type": "precedes"
+                    }
+                ]
+            },
+            {
+                "content": "Neil Armstrong was the first human to walk on the Moon",
+                "category": "space_history",
+                "importance": 0.9,
+                "relationships": [
+                    {
+                        "related_to": "item_1",
+                        "relationship_type": "follows"
+                    }
+                ]
+            }
+        ],
+        "queries": [
+            {
+                "question": "When did the first Moon landing occur?",
+                "relevant_items": ["item_1"],
+                "correct_answer": "July 20, 1969",
+                "required_steps": [
+                    {
+                        "action": "RETRIEVE",
+                        "content": "Apollo 11 landing date",
+                        "explanation": "Access primary date information"
+                    }
+                ]
+            }
+        ],
+        "buffer_constraints": {
+            "max_size": 5,
+            "retention_policy": "importance_based",
+            "access_patterns": ["random"]
+        },
+        "evaluation_metrics": {
+            "retrieval_accuracy": 1.0,
+            "memory_efficiency": 0.8,
+            "response_time": 0.5
+        }
+    },
+    {
+        "id": "MB002",
+        "difficulty": 0.8,
+        "task_type": "relational_query",
+        "information_items": [
+            {
+                "content": "Python was created by Guido van Rossum",
+                "category": "programming_languages",
+                "importance": 0.8,
+                "relationships": [
+                    {
+                        "related_to": "item_2",
+                        "relationship_type": "creator_of"
+                    }
+                ]
+            },
+            {
+                "content": "Python's first release was in 1991",
+                "category": "programming_languages",
+                "importance": 0.7,
+                "relationships": [
+                    {
+                        "related_to": "item_3",
+                        "relationship_type": "temporal"
+                    }
+                ]
+            },
+            {
+                "content": "Python 3.0 was released in 2008",
+                "category": "programming_languages",
+                "importance": 0.6,
+                "relationships": [
+                    {
+                        "related_to": "item_2",
+                        "relationship_type": "follows"
+                    }
+                ]
+            }
+        ],
+        "queries": [
+            {
+                "question": "How many years between Python's creation and Python 3.0?",
+                "relevant_items": ["item_2", "item_3"],
+                "correct_answer": "17 years",
+                "required_steps": [
+                    {
+                        "action": "RETRIEVE",
+                        "content": "Python creation date",
+                        "explanation": "Get initial date"
+                    },
+                    {
+                        "action": "RETRIEVE",
+                        "content": "Python 3.0 release date",
+                        "explanation": "Get comparison date"
+                    },
+                    {
+                        "action": "ANSWER",
+                        "content": "Calculate year difference",
+                        "explanation": "Subtract dates"
+                    }
+                ]
+            }
+        ],
+        "buffer_constraints": {
+            "max_size": 3,
+            "retention_policy": "recency_based",
+            "access_patterns": ["sequential", "random"]
+        },
+        "evaluation_metrics": {
+            "retrieval_accuracy": 0.9,
+            "memory_efficiency": 0.7,
+            "response_time": 0.8
+        }
+    },
+    {
+        "id": "MB003",
+        "difficulty": 0.85,
+        "task_type": "graph_navigation",
+        "information_items": [
+            {
+                "content": "Proteins are composed of amino acid chains",
+                "category": "biochemistry",
+                "importance": 0.9,
+                "relationships": [
+                    {
+                        "related_to": "item_2",
+                        "relationship_type": "composition"
+                    },
+                    {
+                        "related_to": "item_3",
+                        "relationship_type": "precedes"
+                    }
+                ]
+            },
+            {
+                "content": "There are 20 standard amino acids in proteins",
+                "category": "biochemistry",
+                "importance": 0.8,
+                "relationships": [
+                    {
+                        "related_to": "item_1",
+                        "relationship_type": "component"
+                    }
+                ]
+            },
+            {
+                "content": "Protein folding determines 3D structure",
+                "category": "biochemistry",
+                "importance": 0.95,
+                "relationships": [
+                    {
+                        "related_to": "item_1",
+                        "relationship_type": "follows"
+                    },
+                    {
+                        "related_to": "item_4",
+                        "relationship_type": "influences"
+                    }
+                ]
+            },
+            {
+                "content": "Protein function depends on structure",
+                "category": "biochemistry",
+                "importance": 0.9,
+                "relationships": [
+                    {
+                        "related_to": "item_3",
+                        "relationship_type": "dependent"
+                    }
+                ]
+            }
+        ],
+        "queries": [
+            {
+                "question": "What is the relationship between amino acids and protein function?",
+                "relevant_items": ["item_1", "item_3", "item_4"],
+                "correct_answer": "Amino acids form chains that fold into 3D structures, which determine protein function",
+                "required_steps": [
+                    {
+                        "action": "RETRIEVE",
+                        "content": "Protein composition",
+                        "explanation": "Start with basic composition"
+                    },
+                    {
+                        "action": "TRAVERSE",
+                        "content": "Follow relationship to structure",
+                        "explanation": "Connect to folding concept"
+                    },
+                    {
+                        "action": "TRAVERSE",
+                        "content": "Connect to function",
+                        "explanation": "Complete the relationship chain"
+                    },
+                    {
+                        "action": "SYNTHESIZE",
+                        "content": "Combine information",
+                        "explanation": "Form complete explanation"
+                    }
+                ]
+            }
+        ],
+        "buffer_constraints": {
+            "max_size": 4,
+            "retention_policy": "relationship_based",
+            "access_patterns": ["graph_traversal", "random"]
+        },
+        "evaluation_metrics": {
+            "retrieval_accuracy": 0.9,
+            "memory_efficiency": 0.85,
+            "response_time": 0.7,
+            "relationship_accuracy": 0.95
+        }
+    },
+    {
+        "id": "MB004",
+        "difficulty": 0.9,
+        "task_type": "temporal_analysis",
+        "information_items": [
+            {
+                "content": "Market crash occurred at 2:30 PM",
+                "category": "financial_events",
+                "importance": 1.0,
+                "relationships": [
+                    {
+                        "related_to": "item_2",
+                        "relationship_type": "precedes"
+                    }
+                ],
+                "temporal_metadata": {
+                    "timestamp": "2024-03-15T14:30:00",
+                    "duration": "instant"
+                }
+            },
+            {
+                "content": "Trading circuit breakers activated",
+                "category": "financial_events",
+                "importance": 0.9,
+                "relationships": [
+                    {
+                        "related_to": "item_1",
+                        "relationship_type": "follows"
+                    },
+                    {
+                        "related_to": "item_3",
+                        "relationship_type": "triggers"
+                    }
+                ],
+                "temporal_metadata": {
+                    "timestamp": "2024-03-15T14:31:00",
+                    "duration": "15m"
+                }
+            },
+            {
+                "content": "Emergency meeting called by regulators",
+                "category": "financial_events",
+                "importance": 0.8,
+                "relationships": [
+                    {
+                        "related_to": "item_2",
+                        "relationship_type": "triggered_by"
+                    }
+                ],
+                "temporal_metadata": {
+                    "timestamp": "2024-03-15T15:00:00",
+                    "duration": "1h"
+                }
+            }
+        ],
+        "queries": [
+            {
+                "question": "What was the sequence of events after the market crash?",
+                "relevant_items": ["item_1", "item_2", "item_3"],
+                "correct_answer": "Circuit breakers activated one minute after the crash, followed by an emergency regulatory meeting 29 minutes later",
+                "required_steps": [
+                    {
+                        "action": "RETRIEVE",
+                        "content": "Initial event",
+                        "explanation": "Identify starting point"
+                    },
+                    {
+                        "action": "TEMPORAL_SORT",
+                        "content": "Order events by time",
+                        "explanation": "Create chronological sequence"
+                    },
+                    {
+                        "action": "CALCULATE",
+                        "content": "Compute time differences",
+                        "explanation": "Determine intervals between events"
+                    }
+                ]
+            }
+        ],
+        "buffer_constraints": {
+            "max_size": 5,
+            "retention_policy": "temporal_relevance",
+            "access_patterns": ["chronological", "reverse_chronological"]
+        },
+        "evaluation_metrics": {
+            "retrieval_accuracy": 0.95,
+            "memory_efficiency": 0.8,
+            "response_time": 0.85,
+            "temporal_accuracy": 1.0
+        }
+    },
+    {
+        "id": "MB005",
+        "difficulty": 0.95,
+        "task_type": "multi_context_learning",
+        "information_items": [
+            {
+                "content": "Neural networks use weighted connections",
+                "category": "machine_learning",
+                "importance": 0.9,
+                "relationships": [
+                    {
+                        "related_to": "item_2",
+                        "relationship_type": "fundamental_concept"
+                    }
+                ],
+                "context": {
+                    "domain": "technical",
+                    "expertise_level": "intermediate"
+                }
+            },
+            {
+                "content": "Learning occurs by adjusting connection strengths",
+                "category": "machine_learning",
+                "importance": 0.85,
+                "relationships": [
+                    {
+                        "related_to": "item_1",
+                        "relationship_type": "mechanism"
+                    },
+                    {
+                        "related_to": "item_3",
+                        "relationship_type": "analogous_to"
+                    }
+                ],
+                "context": {
+                    "domain": "technical",
+                    "expertise_level": "advanced"
+                }
+            },
+            {
+                "content": "Brain synapses strengthen with repeated use",
+                "category": "neuroscience",
+                "importance": 0.8,
+                "relationships": [
+                    {
+                        "related_to": "item_2",
+                        "relationship_type": "biological_parallel"
+                    }
+                ],
+                "context": {
+                    "domain": "biological",
+                    "expertise_level": "intermediate"
+                }
+            }
+        ],
+        "queries": [
+            {
+                "question": "Explain neural network learning in biological terms",
+                "relevant_items": ["item_1", "item_2", "item_3"],
+                "correct_answer": "Like biological synapses that strengthen with use, neural networks learn by adjusting the strength of connections between nodes",
+                "required_steps": [
+                    {
+                        "action": "CONTEXT_SWITCH",
+                        "content": "Technical to biological domain",
+                        "explanation": "Change perspective"
+                    },
+                    {
+                        "action": "ANALOGY_MAPPING",
+                        "content": "Map concepts between domains",
+                        "explanation": "Identify parallels"
+                    },
+                    {
+                        "action": "SYNTHESIZE",
+                        "content": "Create integrated explanation",
+                        "explanation": "Combine perspectives"
+                    }
+                ]
+            }
+        ],
+        "buffer_constraints": {
+            "max_size": 6,
+            "retention_policy": "context_based",
+            "access_patterns": ["context_switching", "cross_domain"]
+        },
+        "evaluation_metrics": {
+            "retrieval_accuracy": 0.9,
+            "memory_efficiency": 0.75,
+            "response_time": 0.8,
+            "context_switching_accuracy": 0.95,
+            "analogy_quality": 0.9
+        }
+    }
+]

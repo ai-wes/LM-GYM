@@ -1,0 +1,46 @@
+{
+    "id": "string",
+    "difficulty": "float (0.0-1.0)",
+    "task_type": "enum (factual_recall/relational_query/...)",
+    "information_items": [
+        {
+            "content": "string",
+            "category": "string",
+            "importance": "float (0.0-1.0)",
+            "relationships": [
+                {
+                    "related_to": "item_id",
+                    "relationship_type": "string"
+                },
+                ...
+            ]
+        },
+        ...
+    ],
+    "queries": [
+        {
+            "question": "string",
+            "relevant_items": ["item_id"],
+            "correct_answer": "string",
+            "required_steps": [
+                {
+                    "action": "enum (STORE/RETRIEVE/ANSWER)",
+                    "content": "string",
+                    "explanation": "string"
+                },
+                ...
+            ]
+        },
+        ...
+    ],
+    "buffer_constraints": {
+        "max_size": "int",
+        "retention_policy": "string",
+        "access_patterns": ["sequential", "random", ...]
+    },
+    "evaluation_metrics": {
+        "retrieval_accuracy": "float (0.0-1.0)",
+        "memory_efficiency": "float (0.0-1.0)",
+        "response_time": "float"
+    }
+}

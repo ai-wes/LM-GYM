@@ -1,0 +1,44 @@
+{
+    "id": "string",
+    "difficulty": "float (0.0-1.0)",
+    "scenario": {
+        "type": "enum (customer_service/negotiation/debate/...)",
+        "context": "string",
+        "participant_roles": ["user", "agent"],
+        "goals": ["resolve issue", "reach agreement", ...]
+    },
+    "required_elements": [
+        {
+            "type": "string (greeting/empathy/clarification/...)",
+            "examples": ["string"],
+            "importance": "float (0.0-1.0)"
+        },
+        ...
+    ],
+    "conversation_flow": [
+        {
+            "turn": "int",
+            "speaker": "string",
+            "content": "string",
+            "annotations": {
+                "intent": "string",
+                "sentiment": "float (-1.0 to 1.0)",
+                "required_elements_used": ["string"]
+            }
+        },
+        ...
+    ],
+    "success_criteria": {
+        "minimum_turns": "int",
+        "required_outcomes": ["string"],
+        "prohibited_responses": ["string"]
+    },
+    "alternative_paths": [
+        {
+            "trigger": "string",
+            "valid_responses": ["string"],
+            "impact": "float (-1.0 to 1.0)"
+        },
+        ...
+    ]
+}

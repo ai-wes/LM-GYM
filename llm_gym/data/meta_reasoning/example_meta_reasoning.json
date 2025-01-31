@@ -1,0 +1,546 @@
+[
+
+{
+    "id": "MR001",
+    "difficulty": 0.6,
+    "task": {
+        "type": "decision_making",
+        "description": "Choose between two database systems for a high-traffic website",
+        "context": "E-commerce platform upgrade",
+        "constraints": [
+            "Budget: $10,000/month",
+            "Must handle 10,000 concurrent users",
+            "99.99% uptime requirement"
+        ]
+    },
+    "reasoning_components": [
+        {
+            "step": 1,
+            "type": "assumption",
+            "content": "Traffic patterns will remain consistent with current trends",
+            "dependencies": [],
+            "validation_criteria": ["Historical data analysis", "Growth projections"]
+        },
+        {
+            "step": 2,
+            "type": "inference",
+            "content": "NoSQL solution would better handle variable traffic",
+            "dependencies": ["step_1"],
+            "validation_criteria": ["Performance benchmarks", "Scalability tests"]
+        }
+    ],
+    "expected_analysis": {
+        "key_considerations": [
+            "Scalability requirements",
+            "Maintenance costs",
+            "Team expertise"
+        ],
+        "potential_biases": [
+            "Recent technology preference",
+            "Overemphasis on current problems"
+        ],
+        "uncertainty_factors": [
+            {
+                "factor": "Future traffic patterns",
+                "impact": 0.8,
+                "mitigation_strategies": [
+                    "Conservative capacity planning",
+                    "Elastic scaling capabilities"
+                ]
+            }
+        ]
+    },
+    "solution_paths": [
+        {
+            "path_id": "path_1",
+            "steps": [
+                {
+                    "reasoning_step": "Evaluate current system limitations",
+                    "justification": "Establish baseline requirements",
+                    "confidence": 0.9
+                },
+                {
+                    "reasoning_step": "Compare scaling capabilities",
+                    "justification": "Match with traffic projections",
+                    "confidence": 0.8
+                }
+            ],
+            "outcome": {
+                "validity": 0.85,
+                "robustness": 0.8,
+                "explanation": "NoSQL solution meets scalability requirements within budget"
+            }
+        }
+    ],
+    "evaluation_criteria": {
+        "reasoning_quality": [
+            "completeness",
+            "coherence",
+            "validity"
+        ],
+        "bias_awareness": 0.8,
+        "uncertainty_handling": 0.7,
+        "adaptability": 0.9
+    }
+},
+{
+    "id": "MR002",
+    "difficulty": 0.9,
+    "task": {
+        "type": "problem_solving",
+        "description": "Diagnose and resolve recurring system outages in a microservices architecture",
+        "context": "Production environment with 20+ interconnected services",
+        "constraints": [
+            "Maximum 5-minute downtime allowed",
+            "No access to production data",
+            "Must maintain existing API contracts"
+        ]
+    },
+    "reasoning_components": [
+        {
+            "step": 1,
+            "type": "assumption",
+            "content": "Outages are related to system interactions rather than individual service failures",
+            "dependencies": [],
+            "validation_criteria": ["Service health metrics", "Inter-service communication patterns"]
+        },
+        {
+            "step": 2,
+            "type": "verification",
+            "content": "Analyze system logs for cascading failures",
+            "dependencies": ["step_1"],
+            "validation_criteria": ["Log correlation analysis", "Timing of failures"]
+        },
+        {
+            "step": 3,
+            "type": "inference",
+            "content": "Circuit breaker pattern could prevent cascade",
+            "dependencies": ["step_2"],
+            "validation_criteria": ["Simulation results", "Similar architecture patterns"]
+        }
+    ],
+    "expected_analysis": {
+        "key_considerations": [
+            "Service dependency map",
+            "Failure propagation patterns",
+            "Recovery strategies",
+            "Monitoring capabilities"
+        ],
+        "potential_biases": [
+            "Recency bias from last outage",
+            "Oversimplification of complex interactions",
+            "Tool preference bias"
+        ],
+        "uncertainty_factors": [
+            {
+                "factor": "Unknown service interactions",
+                "impact": 0.9,
+                "mitigation_strategies": [
+                    "Comprehensive system mapping",
+                    "Chaos engineering experiments",
+                    "Enhanced monitoring"
+                ]
+            },
+            {
+                "factor": "Load patterns",
+                "impact": 0.7,
+                "mitigation_strategies": [
+                    "Load testing",
+                    "Traffic simulation",
+                    "Gradual rollout"
+                ]
+            }
+        ]
+    },
+    "solution_paths": [
+        {
+            "path_id": "path_1",
+            "steps": [
+                {
+                    "reasoning_step": "Map service dependencies",
+                    "justification": "Understand failure propagation paths",
+                    "confidence": 0.9
+                },
+                {
+                    "reasoning_step": "Identify critical paths",
+                    "justification": "Focus on high-impact services",
+                    "confidence": 0.85
+                },
+                {
+                    "reasoning_step": "Implement circuit breakers",
+                    "justification": "Prevent cascade failures",
+                    "confidence": 0.75
+                },
+                {
+                    "reasoning_step": "Enhance monitoring",
+                    "justification": "Early warning system",
+                    "confidence": 0.8
+                }
+            ],
+            "outcome": {
+                "validity": 0.85,
+                "robustness": 0.9,
+                "explanation": "Comprehensive solution addressing both prevention and detection"
+            }
+        },
+        {
+            "path_id": "path_2",
+            "steps": [
+                {
+                    "reasoning_step": "Service isolation",
+                    "justification": "Minimize failure impact",
+                    "confidence": 0.7
+                },
+                {
+                    "reasoning_step": "Implement retry policies",
+                    "justification": "Handle transient failures",
+                    "confidence": 0.8
+                }
+            ],
+            "outcome": {
+                "validity": 0.7,
+                "robustness": 0.6,
+                "explanation": "Partial solution focusing on containment"
+            }
+        }
+    ],
+    "evaluation_criteria": {
+        "reasoning_quality": [
+            "completeness",
+            "coherence",
+            "validity",
+            "practical_feasibility"
+        ],
+        "bias_awareness": 0.9,
+        "uncertainty_handling": 0.85,
+        "adaptability": 0.8
+    }
+},
+{
+    "id": "MR003",
+    "difficulty": 0.85,
+    "task": {
+        "type": "model_selection",
+        "description": "Select and deploy appropriate AI models for real-time fraud detection system",
+        "context": "Financial institution processing 1M+ transactions daily",
+        "constraints": [
+            "Maximum latency: 100ms per prediction",
+            "False positive rate < 0.1%",
+            "Model updates required weekly",
+            "Compliance with financial regulations"
+        ]
+    },
+    "reasoning_components": [
+        {
+            "step": 1,
+            "type": "analysis",
+            "content": "Evaluate transaction patterns and fraud types",
+            "dependencies": [],
+            "validation_criteria": ["Historical fraud data", "Pattern complexity analysis"]
+        },
+        {
+            "step": 2,
+            "type": "inference",
+            "content": "Ensemble approach needed for different fraud patterns",
+            "dependencies": ["step_1"],
+            "validation_criteria": ["Model performance metrics", "Pattern coverage analysis"]
+        },
+        {
+            "step": 3,
+            "type": "verification",
+            "content": "Test model combination against historical edge cases",
+            "dependencies": ["step_2"],
+            "validation_criteria": ["Edge case detection rate", "False positive analysis"]
+        }
+    ],
+    "expected_analysis": {
+        "key_considerations": [
+            "Model interpretability requirements",
+            "Real-time performance constraints",
+            "Data privacy regulations",
+            "Model maintenance overhead"
+        ],
+        "potential_biases": [
+            "Recent fraud pattern focus",
+            "Overemphasis on false positives",
+            "Technology stack preferences"
+        ],
+        "uncertainty_factors": [
+            {
+                "factor": "Evolving fraud patterns",
+                "impact": 0.9,
+                "mitigation_strategies": [
+                    "Continuous model retraining",
+                    "Pattern detection monitoring",
+                    "Automated model validation"
+                ]
+            },
+            {
+                "factor": "Data quality variations",
+                "impact": 0.7,
+                "mitigation_strategies": [
+                    "Data quality monitoring",
+                    "Robust feature engineering",
+                    "Data augmentation techniques"
+                ]
+            }
+        ]
+    },
+    "solution_paths": [
+        {
+            "path_id": "path_1",
+            "steps": [
+                {
+                    "reasoning_step": "Deploy ensemble of specialized models",
+                    "justification": "Better coverage of fraud patterns",
+                    "confidence": 0.85
+                },
+                {
+                    "reasoning_step": "Implement real-time feature processing",
+                    "justification": "Meet latency requirements",
+                    "confidence": 0.9
+                },
+                {
+                    "reasoning_step": "Set up automated retraining pipeline",
+                    "justification": "Maintain model freshness",
+                    "confidence": 0.8
+                }
+            ],
+            "outcome": {
+                "validity": 0.9,
+                "robustness": 0.85,
+                "explanation": "Comprehensive solution balancing accuracy and performance"
+            }
+        }
+    ],
+    "evaluation_criteria": {
+        "reasoning_quality": [
+            "completeness",
+            "coherence",
+            "validity",
+            "regulatory_compliance"
+        ],
+        "bias_awareness": 0.9,
+        "uncertainty_handling": 0.85,
+        "adaptability": 0.9
+    }
+},
+{
+    "id": "MR004",
+    "difficulty": 0.95,
+    "task": {
+        "type": "incident_response",
+        "description": "Investigate and respond to sophisticated zero-day attack on cloud infrastructure",
+        "context": "Multi-cloud enterprise environment with sensitive data",
+        "constraints": [
+            "Minimize service disruption",
+            "Protect customer data",
+            "Comply with breach notification laws",
+            "Preserve forensic evidence"
+        ]
+    },
+    "reasoning_components": [
+        {
+            "step": 1,
+            "type": "assessment",
+            "content": "Determine attack vector and scope",
+            "dependencies": [],
+            "validation_criteria": ["Log analysis", "Network traffic patterns", "System state evaluation"]
+        },
+        {
+            "step": 2,
+            "type": "analysis",
+            "content": "Identify compromised systems and data",
+            "dependencies": ["step_1"],
+            "validation_criteria": ["Access logs", "Data access patterns", "System integrity checks"]
+        },
+        {
+            "step": 3,
+            "type": "strategy",
+            "content": "Develop containment and eradication plan",
+            "dependencies": ["step_1", "step_2"],
+            "validation_criteria": ["Impact assessment", "Resource availability", "Recovery time objectives"]
+        }
+    ],
+    "expected_analysis": {
+        "key_considerations": [
+            "Attack sophistication level",
+            "Data exposure scope",
+            "Business continuity requirements",
+            "Legal obligations"
+        ],
+        "potential_biases": [
+            "Overreaction to breach",
+            "Previous attack patterns",
+            "Tool familiarity bias"
+        ],
+        "uncertainty_factors": [
+            {
+                "factor": "Full attack scope",
+                "impact": 0.95,
+                "mitigation_strategies": [
+                    "Comprehensive system analysis",
+                    "External security audit",
+                    "Continuous monitoring"
+                ]
+            },
+            {
+                "factor": "Attacker capabilities",
+                "impact": 0.9,
+                "mitigation_strategies": [
+                    "Threat intelligence gathering",
+                    "Behavioral analysis",
+                    "Pattern recognition"
+                ]
+            }
+        ]
+    },
+    "solution_paths": [
+        {
+            "path_id": "path_1",
+            "steps": [
+                {
+                    "reasoning_step": "Immediate containment",
+                    "justification": "Prevent further compromise",
+                    "confidence": 0.9
+                },
+                {
+                    "reasoning_step": "Evidence collection",
+                    "justification": "Support investigation and compliance",
+                    "confidence": 0.85
+                },
+                {
+                    "reasoning_step": "System hardening",
+                    "justification": "Prevent similar attacks",
+                    "confidence": 0.8
+                }
+            ],
+            "outcome": {
+                "validity": 0.9,
+                "robustness": 0.85,
+                "explanation": "Balanced approach to containment and recovery"
+            }
+        }
+    ],
+    "evaluation_criteria": {
+        "reasoning_quality": [
+            "completeness",
+            "coherence",
+            "validity",
+            "timeliness"
+        ],
+        "bias_awareness": 0.95,
+        "uncertainty_handling": 0.9,
+        "adaptability": 0.85
+    }
+},
+{
+    "id": "MR005",
+    "difficulty": 0.8,
+    "task": {
+        "type": "architecture_migration",
+        "description": "Migrate monolithic application to serverless architecture",
+        "context": "Large-scale e-learning platform with global user base",
+        "constraints": [
+            "Zero downtime requirement",
+            "Data consistency maintenance",
+            "Budget constraint: $50,000",
+            "6-month timeline"
+        ]
+    },
+    "reasoning_components": [
+        {
+            "step": 1,
+            "type": "analysis",
+            "content": "Decompose monolith into functional domains",
+            "dependencies": [],
+            "validation_criteria": ["Function coupling", "Data dependencies", "Business logic isolation"]
+        },
+        {
+            "step": 2,
+            "type": "strategy",
+            "content": "Design serverless function boundaries",
+            "dependencies": ["step_1"],
+            "validation_criteria": ["Performance requirements", "Cost optimization", "Scalability needs"]
+        },
+        {
+            "step": 3,
+            "type": "planning",
+            "content": "Develop phased migration approach",
+            "dependencies": ["step_2"],
+            "validation_criteria": ["Risk assessment", "Resource availability", "Business impact"]
+        }
+    ],
+    "expected_analysis": {
+        "key_considerations": [
+            "Function granularity",
+            "State management",
+            "Cold start implications",
+            "Cost optimization"
+        ],
+        "potential_biases": [
+            "Over-optimization",
+            "Framework preferences",
+            "Premature decomposition"
+        ],
+        "uncertainty_factors": [
+            {
+                "factor": "Performance impact",
+                "impact": 0.8,
+                "mitigation_strategies": [
+                    "Load testing",
+                    "Performance monitoring",
+                    "Gradual rollout"
+                ]
+            },
+            {
+                "factor": "Cost predictions",
+                "impact": 0.7,
+                "mitigation_strategies": [
+                    "Usage pattern analysis",
+                    "Cost modeling",
+                    "Resource optimization"
+                ]
+            }
+        ]
+    },
+    "solution_paths": [
+        {
+            "path_id": "path_1",
+            "steps": [
+                {
+                    "reasoning_step": "Identify migration candidates",
+                    "justification": "Start with low-risk components",
+                    "confidence": 0.9
+                },
+                {
+                    "reasoning_step": "Implement parallel running",
+                    "justification": "Validate functionality",
+                    "confidence": 0.85
+                },
+                {
+                    "reasoning_step": "Gradual traffic shifting",
+                    "justification": "Minimize risk",
+                    "confidence": 0.8
+                }
+            ],
+            "outcome": {
+                "validity": 0.85,
+                "robustness": 0.8,
+                "explanation": "Safe and methodical migration approach"
+            }
+        }
+    ],
+    "evaluation_criteria": {
+        "reasoning_quality": [
+            "completeness",
+            "coherence",
+            "validity",
+            "feasibility"
+        ],
+        "bias_awareness": 0.8,
+        "uncertainty_handling": 0.85,
+        "adaptability": 0.9
+    }
+}
+]
