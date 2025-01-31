@@ -1,4 +1,4 @@
-# LLM GYM 🧠
+# LM AGENT GYM 🧠
 
 A comprehensive framework for training and evaluating Large Language Model cognitive strategies through reinforcement learning environments. LLM GYM provides a collection of specialized environments designed to elicit and measure different aspects of LLM reasoning and capabilities.
 
